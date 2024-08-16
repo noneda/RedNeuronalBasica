@@ -64,30 +64,19 @@ pip install tensorflow numpy matplotlib
    ```
    - Entrena el modelo durante 1000 épocas.
 
-6. **Visualización de la Pérdida:**
+6. **Predicción:**
    ```python
-   plt.xlabel("# Time")
-   plt.ylabel("Magnitude of loss")
-   plt.plot(history.history["loss"])
-   plt.show()
+   print("Let's make a prediction!")
+   data = float(input("Enter temperature in Celsius: ")) 
+   result = model.predict(np.array([data]))
    ```
-   - Grafica la pérdida a lo largo del tiempo (número de épocas).
+   - Realiza una predicción para una temperatura del valor que dese
 
-7. **Predicción:**
+7. **Resultado**
    ```python
-   result = model.predict(np.array([100.0]))
-   print(f"The result is {result[0][0]:.2f} fahrenheit!")
+   print(f"The result is {result[0][0]:.2f} Fahrenheit!")
    ```
-   - Realiza una predicción para una temperatura de 100 grados Celsius.
 
-8. **Variables Internas del Modelo:**
-   ```python
-   print("Internal variables of the model")
-   print("Hidden layer 1 weights:", hidden_1.get_weights())
-   print("Hidden layer 2 weights:", hidden_2.get_weights())
-   print("Output layer weights:", output.get_weights())
-   ```
-   - Imprime los pesos internos de las capas del modelo.
 
 ## Diagrama de Clases
 
@@ -100,7 +89,6 @@ classDiagram
         + compile(optimizer, loss)
         + fit(x, y, epochs, verbose)
         + predict(x)
-        + get_weights()
     }
 ```
 
@@ -112,8 +100,7 @@ flowchart TD
     B --> C[Definir las capas del modelo]
     C --> D[Compilar el modelo]
     D --> E[Entrenar el modelo]
-    E --> F[Graficar la pérdida]
-    F --> G[Hacer predicciones]
-    G --> H[Imprimir pesos internos]
-    H --> I[Fin]
+    E --> F[Hacer predicciones]
+    F --> G[Imprimir Resultados]
+    G --> H[Fin]
 ```
